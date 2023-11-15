@@ -10,19 +10,32 @@ import Profile from "../components/Profile";
 import EditProfileForm from "../components/EditProfileForm";
 import Root from "../components/Root";
 
-import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
+import {
+  Route,
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+} from "react-router-dom";
 
 import "./App.css";
 
-const router = createBrowserRouter(createRoutesFromElements(
-  <Route path="/" element={<Root />}>
-   <Route path="About" element={<About/>}/>
-   <Route path="sign-up" element={<SignUp/>}/>
-   <Route path="articles" element={<Articles/>}/>
-   <Route path="categories" element={<Categories/>}/>
-   <Route path="profile" element={<Profile/>}/>
-  </Route>
-));
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Root />}>
+      <Route path="About" element={<About />} />
+      <Route path="sign-up" element={<SignUp />} />
+      <Route path="articles" element={<Articles />} />
+      <Route path="/articles/:title" element={<Article />} />
+      <Route path="/authors/:name" element={<Author />} />
+      <Route path="categories" element={<Categories />}>
+        <Route path=":name" element={<Category />} />
+      </Route>
+      <Route path="profile" element={<Profile />}>
+        <Route path="edit" element={<EditProfileForm />} />
+      </Route>
+    </Route>
+  )
+);
 
 function App() {
   return <RouterProvider router={router} />;
