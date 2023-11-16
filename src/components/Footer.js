@@ -7,13 +7,11 @@ export default function Footer() {
   const navigate = useNavigate();
 
   const goBack = () => {
-    // imperatively redirect back
     navigate(-1)
     
   }
 
   const goForward = () => {
-    // imperatively redirect forward
     navigate(1)
     
   }
